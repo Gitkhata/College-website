@@ -1,0 +1,44 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<div class="form" id="loginModel" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-0 border-0 p-4">
+                <div class="modal-header border-0">
+                    <h3>Update Notice</h3>
+                </div>
+            <div class="form">
+                <form action="/notices/notice/<%=notice._id%>?_method=PUT" method="POST" class="row" enctype="multipart/form-data">
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="noticeTitle" name="noticeTitle"
+                               placeholder="Title" value="<%=notice.noticeTitle%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <textarea cols="5" rows="7" class="form-control mb-3" id="updateNoticeBody" name="noticeBody"
+                                  placeholder="Body" required><%-notice.noticeBody%></textarea>
+                        <script>
+                            $("#updateNoticeBody").summernote({
+                                tabsize:2,
+                                height:500
+                            });
+                        </script>
+                    </div>
+                    <div class="col-12">
+                        <input type="file" class="form-control mb-3" id="image" name="image"
+                               placeholder="Notice Image" value="<%=notice.image%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+                <a href="/notices/notice/<%=notice._id%>" class="btn btn-primary mt-1">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer'); %>

@@ -1,0 +1,60 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<div class="card-header py-2 bg-white text-lg-right col-lg-12 ">
+
+    <ul class="list-inline">
+
+        <li>
+            <% if(loggedIn) {%>
+            <a class="btn btn-sm btn-primary" href="/notices/create">New Notice</a>
+            <%}%>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- notice -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-unstyled">
+                    <!-- notice item -->
+                    <%# for (var i = 0; i < notices.length;i++) { %>
+                    <% for (var i = notices.length-1; i>=0; i--) { %>
+                    <% if(loggedIn) {%>
+                        <a href="/notices/notice/<%=notices[i]._id%>/edit" class="btn btn-sm btn-primary mb-1">Edit</a>
+                        <a href="/notices/notice/delete/<%=notices[i]._id%>" class="btn btn-sm btn-danger mb-1">Delete</a>
+                        <%}%>
+
+                    <li class="d-md-table mb-4 w-100 border-bottom hover-shadow">
+                        <div class=" d-md-table-cell  text-center   p-4    bg-primary   text-white  mb-4 mb-md-0 ">
+                            <span class="h2 d-block"><%= notices[i].datePosted.getDate()%></span><%= notices[i].datePosted.toDateString()%>
+                        </div>
+                        <div class="d-md-table-cell px-4 vertical-align-middle mb-4 mb-md-0">
+                            <a href="/notices/notice/<%= notices[i]._id%>" class="h4 mb-3 d-block"><%= notices[i].noticeTitle%></a>
+                            <p class="mb-0">
+                                <%- notices[i].noticeBody.substring(0,100)%>
+                            </p>
+                        </div>
+
+                        <div class="d-md-table-cell text-right pr-0 pr-md-4">
+
+                            <a href="/notices/notice/<%= notices[i]._id%>" class="btn btn-primary">read more</a>
+                        </div>
+                    </li>
+                    <%}%>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /notice -->
+
+<%- include('../partials/footer'); %>

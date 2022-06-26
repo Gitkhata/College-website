@@ -1,0 +1,49 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<!-- about -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <ul class="list-inline text-right">
+                    <%if(loggedIn){%>
+                        <li>
+                            <a class="btn btn-sm btn-primary mb-1" href="/about/create">New Post</a>
+                        </li>
+                    <%} else {%>
+                        <li>
+                        </li>
+                    <%}%>
+                </ul>
+                <% for (var i=aboutUs.length-1; i>=aboutUs.length-1; i--) {%>
+
+                <div style="padding: 5%">
+                    <ul class="list-inline text-left mb-3">
+                        <%if(loggedIn){%>
+                        <li>
+                            <a href="/about/post/<%=aboutUs[aboutUs.length-1]._id%>/edit" class="btn btn-sm btn-primary-outline mb-1">Edit</a>
+                            <a href="/about/post/<%=aboutUs[aboutUs.length-1]._id%>/delete" class="btn btn-sm btn-danger mb-1">Delete</a>
+                        </li>
+                        <%} else {%>
+                            <li>
+                            </li>
+                        <%}%>
+                    </ul>
+                    <h2 class="section-title"><%=aboutUs[aboutUs.length-1].title%></h2>
+
+                    <p><%-aboutUs[aboutUs.length-1].body%></p>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /about -->
+
+<%- include('../partials/footer'); %>
+

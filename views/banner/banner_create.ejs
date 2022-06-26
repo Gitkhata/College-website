@@ -1,0 +1,49 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<div class="form" id="" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <div class="modal-header border-0">
+                <h3>Banner Post</h3>
+            </div>
+            <div class="form">
+                <form action="/banners/store" method="POST" class="row" enctype="multipart/form-data">
+
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="bannerTitle" name="bannerTitle"
+                               placeholder="Banner Title">
+                    </div>
+
+                    <div class="col-12">
+                        <textarea cols="5" rows="7" class="form-control mb-3" id="bannerDescription"
+                                  name="bannerDescription"
+                                  placeholder="Banner description in short"></textarea>
+
+                        <script>
+                            $("#bannerDescription").summernote({
+                                placeholder: "New Banner Post",
+                                tabsize: 2,
+                                height: 400
+                            });
+                        </script>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="file" class="form-control mb-3" id="image" name="image"
+                               placeholder="Thumbnail Image">
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">CREATE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

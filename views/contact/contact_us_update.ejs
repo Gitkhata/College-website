@@ -1,0 +1,57 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<div class="form" id="loginModel" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <h3><%=title%></h3>
+            <div class="form">
+                <form action="/contact/post/<%=contactUs._id%>?_method=PUT" method="POST" class="row" enctype="multipart/form-data">
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="phone1" name="phone1"
+                               placeholder="Phone Number" value="<%- contactUs.phone1%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="phone2" name="phone2"
+                               placeholder="Phone Number 2" value="<%- contactUs.phone2%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="email" class="form-control mb-3" id="email" name="email"
+                               placeholder="Email Address" value="<%- contactUs.email%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="url" class="form-control mb-3" id="facebookUrl" name="facebookUrl"
+                               placeholder="Facebook URL" value="<%- contactUs.facebookUrl%>">
+                    </div>
+
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="address" name="address"
+                               placeholder="College Address" value="<%- contactUs.address%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <textarea cols="5" rows="7" class="form-control mb-3" id="description" name="description"
+                                  placeholder="Description" required><%- contactUs.description%></textarea>
+                        <script>
+                            $("#description").summernote({
+                                placeholder:"Description",
+                                tabsize:2,
+                                height:300
+                            });
+                        </script>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer'); %>

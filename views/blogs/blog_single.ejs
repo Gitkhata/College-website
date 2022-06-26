@@ -1,0 +1,42 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<!-- blog details -->
+<section class="section-sm bg-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <img src="<%= blogpost.image%>" alt="blog-thumb" class="img-fluid w-100">
+      </div>
+      <div class="col-12">
+        <ul class="list-inline">
+          <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><span class="font-weight-bold mr-2">Post:</span><%= blogpost.userid.username%></li>
+          <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><%=blogpost.datePosted.toDateString() %>></li>
+<!--          <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><i class="ti-book mr-2"></i>Read 289</li>-->
+<!--          <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><i class="ti-share mr-2"></i>289</li>-->
+<!--          <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><a class="text-light" href="#"><i class="ti-comments mr-2"></i>265</a></li>-->
+        </ul>
+      </div>
+
+      <!-- border -->
+      <div class="col-12 mt-4">
+        <div class="border-bottom border-primary"></div>
+      </div>
+
+      <!-- blog contect -->
+      <div class="col-12 mb-5">
+        <h1><%= blogpost.postTitle%></h1>
+       <p>
+         <%- blogpost.postBody%>
+       </p>
+      </div>
+  </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+<%- include('../partials/footer'); %>

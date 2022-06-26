@@ -1,0 +1,76 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+
+<div class="card-header py-2 bg-white text-lg-right col-lg-12 ">
+
+
+    <ul class="list-inline">
+        <%if(loggedIn){%>
+        <li>
+            <a class="btn btn-sm btn-primary" href="/blogs/new">New Post</a>
+        </li>
+        <%} else {%>
+        <li>
+
+        </li>
+        <%}%>
+    </ul>
+
+</div>
+<!-- blog -->
+<section class="section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                    <h2 class="section-title"><%= title %></h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+            <!-- blog post -->
+            <% for (var i = blogposts.length-1; i >= 0; i--) { %>
+                <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+                        <% if(loggedIn) {%>
+                        <ul>
+                            <a href="/blogs/post/<%=blogposts[i]._id%>/edit" class="btn btn-sm btn-primary-outline mb-1">Edit</a>
+                            <a href="/blogs/post/<%=blogposts[i]._id%>/delete" class="btn btn-sm btn-danger mb-1">Delete</a>
+                        </ul>
+                        <%}%>
+                        <a href="/blogs/post/<%= blogposts[i]._id%>"><img class="card-img-top rounded-0"  src="<%= blogposts[i].image%>" height="350px"  alt="Post thumb" /></a>
+                        <div class="card-body">
+                            <!-- post meta -->
+                            <ul class="list-inline mb-3">
+                                <!-- post date -->
+                                <li class="list-inline-item mr-3 ml-0">
+                                    <%= blogposts[i].datePosted.toDateString() %>
+                                </li>
+                                <!-- author -->
+                                <li class="list-inline-item mr-3 ml-0"> By <%= blogposts[i].userid.username %>
+                                </li>
+                            </ul>
+                            <a href="/blogs/post/<%= blogposts[i]._id%>">
+                                <h4 class="card-title">
+                                    <%= blogposts[i].postTitle %>
+                                </h4>
+                            </a>
+                            <p class="card-text">
+                                <%- blogposts[i].postBody.substring(0,50) %>...
+                            </p>
+                            <a href="/blogs/post/<%= blogposts[i]._id%>" class="btn btn-primary btn-sm mb-1">read more</a>
+
+                        </div>
+                    </div>
+                </article>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<!-- /blog -->
+
+<%- include('../partials/footer'); %>

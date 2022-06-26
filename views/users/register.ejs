@@ -1,0 +1,42 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<div class="" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <div class="modal-header border-0">
+                <h3><%= title %></h3>
+            </div>
+            <div class="modal-body">
+                <div class="login">
+
+                    <% if (errors != null && errors.length > 0){ %>
+                        <ul class="list-group">
+                            <% for (var i = 0; i < errors.length;i++){ %>
+                                <li class="list-group-item list-group-item-danger mb-1"><%= errors[i] %></li>
+                            <% } %>
+                        </ul>
+                    <% } %>
+                    <form action="/users/create" method="post" class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control mb-3" id="username" name="username"
+                                   placeholder="Username" value="<%username%>">
+                        </div>
+                        <div class="col-12">
+                            <input type="password" class="form-control mb-3" id="password" name="password"
+                                   placeholder="Password" value="<%password%>">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer'); %>

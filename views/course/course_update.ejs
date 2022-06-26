@@ -1,0 +1,58 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<div class="form" id="loginModel" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <h3><%=title%></h3>
+            <div class="form">
+                <form action="/courses/course/<%=course._id%>?_method=PUT" method="POST" class="row" enctype="multipart/form-data">
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="name" name="name"
+                               placeholder="Course name" value="<%=course.name%>" equired>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="faculty" name="faculty"
+                               placeholder="Faculty" value="<%=course.faculty%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="number" min="0" class="form-control mb-3" id="totalSemester" name="totalSemester"
+                               placeholder="Total no.of semester" value="<%=course.totalSemester%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="courseDuration" name="courseDuration"
+                               placeholder="Course duration" value="<%=course.courseDuration%>"required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="universityAffiliation" name="universityAffiliation"
+                               placeholder="University affiliation" value="<%=course.universityAffiliation%>"required>
+                    </div>
+
+                    <div class="col-12">
+                        <textarea cols="5" rows="7" class="form-control mb-3" id="description" name="description"
+                                  placeholder="description" required><%=course.description%></textarea>
+                        <script>
+                            $("#description").summernote({
+                                placeholder:"Enter course details",
+                                tabsize:2,
+                                height:300
+                            });
+                        </script>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+                <a href="/courses/course/<%=course._id%>" class="btn btn-primary mt-1">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer'); %>

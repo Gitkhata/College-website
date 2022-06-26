@@ -1,0 +1,46 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<div class="form" id="loginModel" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <%if(loggedIn) {%>
+                <div class="modal-header border-0">
+                    <h3><%=title%></h3>
+                </div>
+            <%}%>
+            <div class="form">
+                <form action="/blogs/post/<%=blogpost._id%>?_method=PUT" method="POST" class="row" enctype="multipart/form-data">
+
+                    <div class="col-12">
+                        <input type="text" class="form-control mb-3" id="postTitle" name="postTitle"
+                               placeholder="Title" value="<%=blogpost.postTitle%>" required>
+                    </div>
+                    <div class="col-12">
+                        <textarea cols="5" rows="7" class="form-control mb-3" id="postBody" name="postBody"
+                                  placeholder="Body" required><%=blogpost.postBody%></textarea>
+                        <script>
+                            $("#postBody").summernote({
+                                tabsize:2,
+                                height:400
+                            });
+                        </script>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="file" class="form-control mb-3" id="image" name="image"
+                               placeholder="Thumbnail Image" value="<%blogpost.image%>" required>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">UPDATE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer'); %>

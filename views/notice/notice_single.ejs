@@ -1,0 +1,32 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/top_fixed_header'); %>
+
+<%- include('../partials/page_title'); %>
+
+<!-- notice details -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex">
+                    <div class="text-center mr-4">
+                        <div class="p-4 bg-primary text-white">
+                            <span class="h2 d-block"><%= notice.datePosted.getDate()%></span> <%= notice.datePosted.toDateString()%>
+                        </div>
+                    </div>
+                    <!-- notice content -->
+                    <div>
+                        <h3 class="mb-4"><%=notice.noticeTitle%></h3>
+                       <p>
+                           <%- notice.noticeBody -%>
+                       </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /notice details -->
+
+<%- include('../partials/footer'); %>

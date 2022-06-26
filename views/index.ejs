@@ -1,0 +1,49 @@
+<%- include('./partials/header'); %>
+
+<%- include('./partials/top_fixed_header'); %>
+
+<%#- include('./partials/page_title'); %>
+<%#- include('hero_slider'); %>
+
+<!-- hero slider -->
+
+
+<section class="hero-section overlay bg-cover"
+         <% for (i = banners.length - 1 ; i >= 0 ;i--) { %>data-background="<%= banners[banners.length - 1].image %>"
+        <% } %>
+>
+
+    <div class="container ">
+        <%if (loggedIn){%>
+        <div class="text-right">
+            <a href="/banners/create" class="btn btn-sm btn-primary">New Banner</a>
+        </div>
+        <%}%>
+            <div class="hero-slider">
+                <!-- slider item -->
+                <% for (i = 0; i < banners.length;i++) { %>
+                <div class="hero-slider-item">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5"
+                                data-duration-in=".3"
+                                data-animation-in="fadeInLeft" data-delay-in=".1"><%= banners[i].bannerTitle %></h1>
+                            <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5"
+                               data-duration-in=".3"
+                               data-animation-in="fadeInLeft" data-delay-in=".4">
+                                <%- banners[i].bannerDescription.substring(0, 100) %>
+                            </p>
+
+                            <!--                            <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutRight"-->
+                            <!--                               data-delay-out="5"-->
+                            <!--                               data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7">Call now</a>-->
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+    </div>
+</section>
+<!-- /hero slider -->
+
+<%- include('./partials/footer') %>

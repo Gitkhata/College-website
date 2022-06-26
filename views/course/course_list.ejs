@@ -1,0 +1,68 @@
+<%- include('../partials/header'); %>
+
+<!--navbar-->
+<%- include('../partials/top_fixed_header'); %>
+
+
+<%- include('../partials/page_title'); %>
+
+<!-- courses -->
+<section class="section-sm mt-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class=" d-flex align-items-center section-title justify-content-between">
+                    <h2 class="mb-0 text-nowrap mr-3"><%= title %></h2>
+                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                    <div>
+                        <% if (loggedIn) { %>
+                            <a href="/courses/create" class="btn btn-sm btn-primary ml-sm-3 d-none d-sm-block">New
+                                Course</a>
+                        <%} %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- courses -->
+<section class="section">
+    <div class="container">
+        <!-- course list -->
+        <div class="row">
+            <!-- course item -->
+            <% for (var i = courses.length - 1; i >= 0; i--) { %>
+                <div class="col-lg-4 col-sm-6 mb-5">
+                    <div class="card p-0 border-primary rounded-0 hover-shadow">
+                        <img class="card-img-top rounded-0" src="/images/courses/course-1.jpg" alt="course thumb">
+                        <div class="card-body">
+                            <% if(loggedIn) { %>
+                                <a href="/courses/course/<%= courses[i]._id %>/edit"
+                                   class="btn btn-sm btn-primary mb-1">Edit</a>
+                                <a href="/courses/course/<%= courses[i]._id %>/delete"
+                                   class="btn btn-sm btn-danger mb-1">Delete</a>
+                            <% } %>
+                            <ul class="list-inline mb-2">
+                                <li class="list-inline-item"><i class="mr-1 text-color"></i></li>
+                                <li class="list-inline-item"><a class="text-color"
+                                                                href="#"><%- courses[i].faculty %></a></li>
+                            </ul>
+                            <a href="/courses/course/<%= courses[i]._id %>">
+                                <h4 class="card-title"><%- courses[i].name %></h4>
+                            </a>
+                            <p class="card-text mb-4"></p>
+                            <a href="/courses/course/<%= courses[i]._id %>" class="btn btn-primary btn-sm"
+                            >Details</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- /course list -->
+    </div>
+</section>
+<!-- /courses -->
+</section>
+<%- include('../partials/footer'); %>
